@@ -1,0 +1,118 @@
+Sub 赋值()
+'
+' 赋值 宏
+'
+
+'
+    Columns("B:B").Select
+    Selection.Copy
+    Columns("G:G").Select
+    Selection.PasteSpecial
+    Application.CutCopyMode = False
+    Selection.ClearFormats
+    Range("G:G,I:I,J:J,K:K,L:L").Select
+    Selection.Clear
+    Columns("H:H").Select
+    Selection.Replace What:="很好", Replacement:="1", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="很重视", Replacement:="1", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="完善", Replacement:="1", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="很有效", Replacement:="1", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+	Selection.Replace What:="有力度", Replacement:="1", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="好", Replacement:="1", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+
+    Selection.Replace What:="较好", Replacement:="0.8", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="比较重视", Replacement:="0.8", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="比较完善", Replacement:="0.8", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="比较有效", Replacement:="0.8", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+	Selection.Replace What:="力度较大", Replacement:="0.8", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+		
+		
+    Selection.Replace What:="一般", Replacement:="0.6", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+	
+    Selection.Replace What:="不太好", Replacement:="0.4", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="不太重视", Replacement:="0.4", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="不太完善", Replacement:="0.4", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="不太有效", Replacement:="0.4", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="力度较小", Replacement:="0.4", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+
+    Selection.Replace What:="不好", Replacement:="0.2", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="不重视", Replacement:="0.2", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+    Selection.Replace What:="不完善", Replacement:="0.2", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False		
+    Selection.Replace What:="没效果", Replacement:="0.2", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False		
+    Selection.Replace What:="没有力度", Replacement:="0.2", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False	
+		
+	Selection.Replace What:="不了解", Replacement:="0.2", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False	
+    Selection.Replace What:="没听说", Replacement:="0.2", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False		
+    Selection.Replace What:="不好说", Replacement:="0.2", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+		
+    Selection.Replace What:="合计", Replacement:="", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+        
+   ' Range("I6").Select
+   ' ActiveCell.FormulaR1C1 = "=IF(RC[-1]="""","""",RC[-5]*RC[-1])"
+   ' Range("I6").Select
+   ' Selection.AutoFill Destination:=Range("I6:I390"), Type:=xlFillDefault
+
+
+    Dim i As Long
+    For i = 1 To 300
+   ' If Cells(i, 8) = "" Then Cells(i, 9) = ""
+    If Cells(i, 8) <> "" Then Cells(i, 9) = Cells(i, 8) * Cells(i, 4)
+    Next
+    Sheets(1).Name = "导出结果及计算"
+	Sheets.Add After:=Sheets(1)
+    Sheets(2).Name = "计算结果"
+End Sub
+
+
