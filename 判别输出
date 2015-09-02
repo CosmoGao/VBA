@@ -1,5 +1,11 @@
 Sub score()
+Range("a:a").Clear
 Range("B:B").Clear
+
+Range("B1:B50") = "=randbetween(50,100)"
+Range("B1:B50").Copy
+Range("A1:A50").PasteSpecial Paste:=xlPasteValues, operation:=xlNone, skipBlanks:=False, Transpose:=False
+
 For i = 1 To 50
 
 Dim score%
