@@ -132,7 +132,6 @@ Sub 赋分()
     Sheets(2).Name = "计算结果"
 
 
-For i = 1 To 200
 
 '有纪检组织的单位
     Workbooks("指标体系和权重定稿.xlsx").Sheets(3).Range("A1:I18").Copy
