@@ -94,6 +94,9 @@ Sub 赋值()
     Selection.Replace What:="不好说", Replacement:="0.2", LookAt:=xlWhole, _
         SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
         ReplaceFormat:=False
+    Selection.Replace What:="未开展工作", Replacement:="0.2", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
 		
     Selection.Replace What:="合计", Replacement:="", LookAt:=xlWhole, _
         SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
