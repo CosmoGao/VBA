@@ -141,8 +141,10 @@ Sub 计算得分()
 
 '有纪检组织的单位
 a:
+    Workbooks.Open ("E:/OneDrive/CMMR/未归挡项目/2015丰台区党风廉政建设民意调查项目资料/计算/指标体系和权重定稿.xlsx")
+    ActiveWindow.WindowState = xlMinimized
     Workbooks("指标体系和权重定稿.xlsx").Sheets(3).Range("A1:I18").Copy
-    Selection.PasteSpecial Paste:=xlPasteAllUsingSourceTheme, Operation:=xlNone _
+    Sheets(2).Cells(1, 1).PasteSpecial Paste:=xlPasteAllUsingSourceTheme, Operation:=xlNone _
        , SkipBlanks:=False, Transpose:=False
     For i = 1 To 200
     If Sheets(1).Cells(i, 1) Like "A4*" Then Sheets(2).Cells(4, 9) = Sheets(1).Cells(i, 10)
@@ -161,13 +163,17 @@ a:
     If Sheets(1).Cells(i, 1) Like "A12*" Then Sheets(2).Cells(17, 9) = Sheets(1).Cells(i, 10)
     If Sheets(1).Cells(i, 1) Like "A13*" Then Sheets(2).Cells(18, 9) = Sheets(1).Cells(i, 10)
         Next
+   
+    Workbooks("指标体系和权重定稿.xlsx").Close
     End
      
     
  '无纪检组织的单位
 b:
+    Workbooks.Open ("E:/OneDrive/CMMR/未归挡项目/2015丰台区党风廉政建设民意调查项目资料/计算/指标体系和权重定稿.xlsx")
+    ActiveWindow.WindowState = xlMinimized
     Workbooks("指标体系和权重定稿.xlsx").Sheets(4).Range("A1:I17").Copy
-    Selection.PasteSpecial Paste:=xlPasteAllUsingSourceTheme, Operation:=xlNone _
+    Sheets(2).Cells(1, 1).PasteSpecial Paste:=xlPasteAllUsingSourceTheme, Operation:=xlNone _
        , SkipBlanks:=False, Transpose:=False
     For i = 1 To 200
     If Sheets(1).Cells(i, 1) Like "A4*" Then Sheets(2).Cells(4, 9) = Sheets(1).Cells(i, 10)
@@ -185,6 +191,8 @@ b:
     If Sheets(1).Cells(i, 1) Like "A12*" Then Sheets(2).Cells(16, 9) = Sheets(1).Cells(i, 10)
     If Sheets(1).Cells(i, 1) Like "A13*" Then Sheets(2).Cells(17, 9) = Sheets(1).Cells(i, 10)
         Next
+    
+    Workbooks("指标体系和权重定稿.xlsx").Close
     End If
  
 End Sub
