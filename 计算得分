@@ -104,7 +104,10 @@ Sub 计算得分()
     Selection.Replace What:="未开展工作", Replacement:="0.2", LookAt:=xlWhole, _
         SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
         ReplaceFormat:=False
-
+    Selection.Replace What:="本单位不设纪委（纪工委、纪检组）", Replacement:="0.2", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+        
 '清除合计项
     Selection.Replace What:="合计", Replacement:="", LookAt:=xlWhole, _
         SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
@@ -193,6 +196,9 @@ b:
         Next
     
     Workbooks("指标体系和权重定稿.xlsx").Close
+    
     End If
- 
+    
+    Sheets(2).Range("A1").Select
+    
 End Sub
