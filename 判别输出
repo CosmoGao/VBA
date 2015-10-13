@@ -1,31 +1,43 @@
-Sub score()
-Range("a:a").Clear
-Range("B:B").Clear
-
-Range("B1:B50") = "=randbetween(50,100)"
-Range("B1:B50").Copy
-Range("A1:A50").PasteSpecial Paste:=xlPasteValues, operation:=xlNone, skipBlanks:=False, Transpose:=False
-
-For i = 1 To 50
-
-Dim score%
-score = Cells(i, 1)
-Dim flag As Boolean
-
-If score >= 60 Then
-'flag = True
-
-'If Cells(i, 1) >= 60 Then
-Cells(i, 2) = "及格"
-Else
-Cells(i, 2) = "不及格"
-'flag = False
-
-'Cells(i, 2) = flag
-
-End If
-
-
-Next
-
-End Sub
+Option Explicit
+ Sub score()
+ Range("A:C").Clear
+ Cells(1, 1) = "分数"
+ Cells(1, 2) = "成绩"
+ Cells(1, 3) = "等级"
+ 
+ 
+ Dim ipt%
+ ipt = InputBox("请输入模拟数据数量", "定义数量", 50, 1)
+ Dim i As Integer
+    For i = 2 To ipt + 1
+        
+    Cells(i, 1) = Int(50 * Rnd + 50)
+ Dim score As Integer
+    score = Cells(i, 1)
+ 
+ If score >= 60 Then
+    Cells(i, 2) = "及格"
+ Else
+    Cells(i, 2) = "不及格"
+    End If
+ 
+ If score >= 90 Then
+ Cells(i, 3) = "优秀"
+ Else
+     If score >= 80 Then
+     Cells(i, 3) = "良好"
+     Else
+        If score >= 70 Then
+        Cells(i, 3) = "中等"
+        Else
+            If score >= 60 Then
+            Cells(i, 3) = "及格"
+            Else
+            Cells(i, 3) = "不及格"
+            End If
+        End If
+    End If
+ End If
+ Next
+   
+ End Sub
