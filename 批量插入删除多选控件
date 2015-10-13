@@ -15,3 +15,7 @@ Sub 批量插入多选控件()
     Next
     Range(Cell, Cells(ActiveSheet.UsedRange.Rows.Count, Cell.Column)).NumberFormat = ";;;"
 End Sub
+
+Sub 删除所有多选控件()
+    Sheets(1).CheckBoxes.Delete
+End Sub
