@@ -119,7 +119,7 @@ Sub 计算得分()
     Selection.Replace What:="合计", Replacement:="", LookAt:=xlWhole, _
         SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
         ReplaceFormat:=False
-
+    Dim i%, j%
 '根据权重进行相乘
     For i = 1 To 300
    '    If Cells(i, 8) = "" Then Cells(i, 9) = ""
