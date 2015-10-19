@@ -3,16 +3,7 @@ Sub 计算得分()
 '该宏应用于将SPSS导出的等距量表转换为百分制，并计算加权平均数
 '高宇皓 编写
 
-    
-'文件需求提醒框
-    Dim notice As Integer
-    notice = MsgBox("请确认已经下载“指标体系和权重定稿.xlsx”并放在同一文件夹内！", vbOKCancel, "注意！")
-    If notice = 2 Then
-    End
-    Else
-
 '将B列复制到G列
-    Sheets(1).Select
     Columns("B:B").Select
     Selection.Copy
     Columns("G:G").Select
@@ -113,7 +104,10 @@ Sub 计算得分()
     Selection.Replace What:="未开展工作", Replacement:="0.2", LookAt:=xlWhole, _
         SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
         ReplaceFormat:=False
-
+    Selection.Replace What:="本单位不设纪委（纪工委、纪检组）", Replacement:="0.2", LookAt:=xlWhole, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
+        
 '清除合计项
     Selection.Replace What:="合计", Replacement:="", LookAt:=xlWhole, _
         SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
@@ -150,11 +144,11 @@ Sub 计算得分()
 
 '有纪检组织的单位
 a:
-    Workbooks.Open (ThisWorkbook.Path & "/指标体系和权重定稿.xlsx")
+    Workbooks.Open ("E:/OneDrive/CMMR/未归挡项目/2015丰台区党风廉政建设民意调查项目资料/计算/指标体系和权重定稿.xlsx")
     ActiveWindow.WindowState = xlMinimized
     Workbooks("指标体系和权重定稿.xlsx").Sheets(3).Range("A1:I18").Copy
-    Sheets(2).Cells(1, 1).PasteSpecial Paste:=xlPasteAllUsingSourceTheme, operation:=xlNone _
-       , skipBlanks:=False, Transpose:=False
+    Sheets(2).Cells(1, 1).PasteSpecial Paste:=xlPasteAllUsingSourceTheme, Operation:=xlNone _
+       , SkipBlanks:=False, Transpose:=False
     For i = 1 To 200
     If Sheets(1).Cells(i, 1) Like "A4*" Then Sheets(2).Cells(4, 9) = Sheets(1).Cells(i, 10)
     If Sheets(1).Cells(i, 1) Like "A5*①*" Then Sheets(2).Cells(5, 9) = Sheets(1).Cells(i, 10)
@@ -179,11 +173,11 @@ a:
     
  '无纪检组织的单位
 b:
-    Workbooks.Open (ThisWorkbook.Path & "/指标体系和权重定稿.xlsx")
+    Workbooks.Open ("E:/OneDrive/CMMR/未归挡项目/2015丰台区党风廉政建设民意调查项目资料/计算/指标体系和权重定稿.xlsx")
     ActiveWindow.WindowState = xlMinimized
     Workbooks("指标体系和权重定稿.xlsx").Sheets(4).Range("A1:I17").Copy
-    Sheets(2).Cells(1, 1).PasteSpecial Paste:=xlPasteAllUsingSourceTheme, operation:=xlNone _
-       , skipBlanks:=False, Transpose:=False
+    Sheets(2).Cells(1, 1).PasteSpecial Paste:=xlPasteAllUsingSourceTheme, Operation:=xlNone _
+       , SkipBlanks:=False, Transpose:=False
     For i = 1 To 200
     If Sheets(1).Cells(i, 1) Like "A4*" Then Sheets(2).Cells(4, 9) = Sheets(1).Cells(i, 10)
     If Sheets(1).Cells(i, 1) Like "A5*①*" Then Sheets(2).Cells(5, 9) = Sheets(1).Cells(i, 10)
@@ -202,12 +196,9 @@ b:
         Next
     
     Workbooks("指标体系和权重定稿.xlsx").Close
-
+    
     End If
     
     Sheets(2).Range("A1").Select
-    
-    End If
-    
     
 End Sub
