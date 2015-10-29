@@ -24,12 +24,12 @@ Sub 合并汇总表()
 
  '循环处理
 
- Do While MyName <> ""														'名称判断
-    If MyName <> AWbName Then												'除本文件外
-        Set Wb = Workbooks.Open(MyPath & "\" & MyName)						'定义变量
+ Do While MyName <> ""                                         		'名称判断
+    If MyName <> AWbName Then                                    '除本文件外
+        Set Wb = Workbooks.Open(MyPath & "\" & MyName)           '定义变量
         Num = Num + 1
             Dim i As Integer
-                Workbooks(AWbName).Activate									'激活汇总表
+                Workbooks(AWbName).Activate                      '激活汇总表
                     i = Num + 2
                         Cells(i, 1) = i - 2
                         Cells(i, 2) = Wb.Sheets(1).Range("C3")
@@ -47,7 +47,7 @@ Sub 合并汇总表()
                         Cells(i, 13) = Wb.Sheets(1).Range("C14")
                         Cells(i, 14) = Wb.Sheets(1).Range("F14")
                         Cells(i, 15) = Wb.Sheets(1).Range("C23")
-        Wb.Close False														'关闭表
+        Wb.Close False                                           '关闭表
     End If
         MyName = Dir
  Loop
