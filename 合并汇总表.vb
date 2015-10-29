@@ -32,7 +32,7 @@ Sub 合并汇总表()
                 Workbooks(AWbName).Activate									'激活汇总表
                     i = Num + 2
                         Cells(i, 1) = i - 2
-                        Cells(i, 2) = Wb.Sheets(1).Cells(3, 3)
+                        Cells(i, 2) = Wb.Sheets(1).Range("C3")
                         Cells(i, 3) = Wb.Sheets(1).Range("F10")
                         Cells(i, 4) = Wb.Sheets(1).Range("C10")
                         Cells(i, 5) = Wb.Sheets(1).Range("C6")
