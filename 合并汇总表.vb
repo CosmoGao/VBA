@@ -17,7 +17,7 @@ Sub 合并汇总表()
     Application.ScreenUpdating = False
  
  '定义目录文件格式及变量值
-	MyPath = ActiveWorkbook.Path
+    MyPath = ActiveWorkbook.Path
     MyName = Dir(MyPath & "\" & "*.xlsx")
     AWbName = ActiveWorkbook.Name
     Num = 0
