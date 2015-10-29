@@ -56,7 +56,7 @@ Sub 合并汇总表()
  Application.ScreenUpdating = True
  
  '统计合并个数
- MsgBox "共合并了" & Num & "个工作薄表", vbInformation, "提示"
+ MsgBox "共合并了" & Num & "个工作薄", vbInformation, "提示"
 
 End Sub
 
