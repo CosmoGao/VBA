@@ -3,6 +3,9 @@ Sub 合并汇总表()
 
 '本程序适用于合并多个格式一致的Excel表格至一个汇总表  by 高宇皓
 
+'加密限制编辑
+ ActiveSheet.Unprotect Password:="123"
+
 '条件确认
  If MsgBox("请确认要合并的文件与汇总表在同一文件夹，且文件夹内没有其他文件！", vbOKCancel, "重要提示") = vbCancel Then
  Exit Sub
@@ -17,19 +20,19 @@ Sub 合并汇总表()
     Application.ScreenUpdating = False
  
  '定义目录文件格式及变量值
-	MyPath = ActiveWorkbook.Path
+    MyPath = ActiveWorkbook.Path
     MyName = Dir(MyPath & "\" & "*.xlsx")
     AWbName = ActiveWorkbook.Name
     Num = 0
 
  '循环处理
 
- Do While MyName <> ""														'名称判断
-    If MyName <> AWbName Then												'除本文件外
-        Set Wb = Workbooks.Open(MyPath & "\" & MyName)						'定义变量
+ Do While MyName <> ""                                                      '名称判断
+    If MyName <> AWbName Then                                               '除本文件外
+        Set Wb = Workbooks.Open(MyPath & "\" & MyName)                      '定义变量
         Num = Num + 1
             Dim i As Integer
-                Workbooks(AWbName).Activate									'激活汇总表
+                Workbooks(AWbName).Activate                                 '激活汇总表
                     i = Num + 2
                         Cells(i, 1) = i - 2
                         Cells(i, 2) = Wb.Sheets(1).Range("C3")
@@ -47,7 +50,7 @@ Sub 合并汇总表()
                         Cells(i, 13) = Wb.Sheets(1).Range("C14")
                         Cells(i, 14) = Wb.Sheets(1).Range("F14")
                         Cells(i, 15) = Wb.Sheets(1).Range("C23")
-        Wb.Close False														'关闭表
+        Wb.Close False                                                      '关闭表
     End If
         MyName = Dir
  Loop
@@ -57,7 +60,27 @@ Sub 合并汇总表()
  
  '统计合并个数
  MsgBox "共合并了" & Num & "个工作薄表", vbInformation, "提示"
+ 
+ '加密指定范围
+    Range("A1:N1").Select
+    Selection.UnMerge
+    Cells.Select
+    Selection.Locked = False
+    Selection.FormulaHidden = False
+    Columns("B:N").Select
+    Selection.Locked = True
+    Selection.FormulaHidden = False
+    Range("A1:N1").Select
+    Selection.Merge
+ ActiveSheet.Protect Password:="123", DrawingObjects:=False, Contents:=True, Scenarios:= _
+        False, AllowFormattingCells:=True, AllowFormattingColumns:=True, _
+        AllowFormattingRows:=True, AllowInsertingColumns:=True, AllowInsertingRows _
+        :=True, AllowInsertingHyperlinks:=True, AllowDeletingColumns:=True, _
+        AllowSorting:=True, AllowFiltering:=True, AllowUsingPivotTables:=True
 
 End Sub
+
+
+
 
 
