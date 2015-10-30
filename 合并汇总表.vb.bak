@@ -25,9 +25,6 @@ Sub 合并汇总表()
     AWbName = ActiveWorkbook.Name
     Num = 0
 
- Range("3:65536").Clear
- 
-
  '循环处理
 
  Do While MyName <> ""                                                      '名称判断
@@ -57,12 +54,12 @@ Sub 合并汇总表()
     End If
         MyName = Dir
  Loop
- 
- Range(Cells(3, 1), Cells(i, 15)).Borders.LineStyle = xlContinuous
- 
+
  '开启屏幕更新
  Application.ScreenUpdating = True
  
+ '统计合并个数
+ MsgBox "共合并了" & Num & "个工作薄表", vbInformation, "提示"
  
  '设置锁定区域
     Range("A1:N1").Select
@@ -82,10 +79,6 @@ Sub 合并汇总表()
         AllowFormattingRows:=True, AllowInsertingColumns:=True, AllowInsertingRows _
         :=True, AllowInsertingHyperlinks:=True, AllowDeletingColumns:=True, _
         AllowSorting:=True, AllowFiltering:=True, AllowUsingPivotTables:=True
- 
- Range("a1").Select
- 
-  '统计合并个数
- MsgBox "共合并了" & Num & "个工作薄表", vbInformation, "提示"
 
 End Sub
+
