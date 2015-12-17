@@ -1,39 +1,39 @@
 Option Explicit
 Sub Step2_1()
     
-    'ÔÂ¶È±íµ¼³öµ½¸÷¸ö¹«Ë¾±í¸ñ
-    '´Ë´¦´ò¿ªÄ³ÔÂÒâ¼ûÂÊºÍÄ³ÔÂÒâ¼ûµã¼°Ä£°åÖĞËùÓĞ¹¤×÷²¾
+    'æœˆåº¦è¡¨å¯¼å‡ºåˆ°å„ä¸ªå…¬å¸è¡¨æ ¼
+    'æ­¤å¤„æ‰“å¼€æŸæœˆæ„è§ç‡å’ŒæŸæœˆæ„è§ç‚¹åŠæ¨¡æ¿ä¸­æ‰€æœ‰å·¥ä½œç°¿
     
     Dim i As Integer
     Dim month As String
-    month = InputBox("ÇëÊäÈëÔÂ·İ", "ÔÂ·İ", "ÔÂ")
+    month = InputBox("è¯·è¾“å…¥æœˆä»½", "æœˆä»½", "æœˆ")
     For i = 1 To 11
         
-        Workbooks(month & "Òâ¼ûµã.xlsx").Activate
+        Workbooks(month & "æ„è§ç‚¹.xlsx").Activate
 
-        '¸´ÖÆµ½ÏàÓ¦¹«Ë¾±í
-        Sheets(i).Copy before:=Workbooks("·şÎñÈÈÏßĞÅÏ¢Í³¼Æ - " & Sheets(i).[b1] & ".xlsx").Sheets(2)
+        'å¤åˆ¶åˆ°ç›¸åº”å…¬å¸è¡¨
+        Sheets(i).Copy before:=Workbooks("æœåŠ¡çƒ­çº¿ä¿¡æ¯ç»Ÿè®¡ - " & Sheets(i).[b1] & ".xlsx").Sheets(2)
         
-        Workbooks(month & "Òâ¼ûÂÊ.xlsx").Activate
+        Workbooks(month & "æ„è§ç‡.xlsx").Activate
 
-        Sheets(i).Copy before:=Workbooks("·şÎñÈÈÏßĞÅÏ¢Í³¼Æ - " & Sheets(i).[b1] & ".xlsx").Sheets(2)
+        Sheets(i).Copy before:=Workbooks("æœåŠ¡çƒ­çº¿ä¿¡æ¯ç»Ÿè®¡ - " & Sheets(i).[b1] & ".xlsx").Sheets(2)
         
-        '¶¨Î»µ¥Ôª¸ñ
+        'å®šä½å•å…ƒæ ¼
         Sheets(1).Select
         
         [a1].Select
         
     Next
     
-    '¿ÉÒÔ¹Ø±ÕÄ³ÔÂÒâ¼ûÂÊºÍÒâ¼ûµã¹¤×÷²¾£¬¶ÔÄ£°åÖĞµÄ¹¤×÷²¾Öğ¸ö´¦Àí
+    'å¯ä»¥å…³é—­æŸæœˆæ„è§ç‡å’Œæ„è§ç‚¹å·¥ä½œç°¿ï¼Œå¯¹æ¨¡æ¿ä¸­çš„å·¥ä½œç°¿é€ä¸ªå¤„ç†
     
 End Sub
 
 Sub Step2_2()
     
-    '¶ÁÈ¡¹«½»ÏßÂ·£¬É¾³ı¶àÓàÁĞ
+    'è¯»å–å…¬äº¤çº¿è·¯ï¼Œåˆ é™¤å¤šä½™åˆ—
     
-    '¹Ø±ÕÆÁÄ»¸üĞÂ
+    'å…³é—­å±å¹•æ›´æ–°
     Application.ScreenUpdating = False
     
     Dim i, n As Integer
@@ -43,19 +43,19 @@ Sub Step2_2()
     
     For i = 1 To n
         
-        '¶ÁÈ¡¹«½»ÏßÂ·
+        'è¯»å–å…¬äº¤çº¿è·¯
         Sheets(1).Cells(3, 6 * i - 4) = Sheets(2).Cells(4, i + 1)
         
     Next
 
    
-    'É¾³ı¶àÓàÁĞ
+    'åˆ é™¤å¤šä½™åˆ—
     Range(Columns(6 * n + 2), Columns(1801)).Delete
 
-    '¿ªÆôÆÁÄ»¸üĞÂ
+    'å¼€å¯å±å¹•æ›´æ–°
     Application.ScreenUpdating = True
 
-    [a1] = "ÏßÂ·ÒÑ¶ÁÈ¡"
+    [a1] = "çº¿è·¯å·²è¯»å–"
         [a1].Select
             With Selection.Interior
                 .Pattern = xlSolid
@@ -70,7 +70,7 @@ End Sub
 
 Sub Step2_3()
  
-    '¹Ø±ÕÆÁÄ»¸üĞÂ
+    'å…³é—­å±å¹•æ›´æ–°
     Application.ScreenUpdating = False
     
     Dim i, j, n As Integer
@@ -81,19 +81,19 @@ Sub Step2_3()
         
         For j = 1 To n
         
-            'Òâ¼ûÂÊ¶ÁÈ¡
+            'æ„è§ç‡è¯»å–
             Cells(i, 6 * j - 4) = Application.IfNa(Application.VLookup(Cells(i, 1), Sheets(2).Cells, Application.Match(Cells(3, 6 * j - 4), Sheets(2).[4:4], 0), 0), 0)
             
-            'Òâ¼ûµã¶ÁÈ¡
+            'æ„è§ç‚¹è¯»å–
             Cells(i, 6 * j - 1) = Application.IfNa(Application.VLookup(Cells(i, 1), Sheets(3).Cells, Application.Match(Cells(3, 6 * j - 4), Sheets(3).[4:4], 0), 0), 0)
         
         Next
     Next
     
-    '¿ªÆôÆÁÄ»¸üĞÂ
+    'å¼€å¯å±å¹•æ›´æ–°
     Application.ScreenUpdating = True
     
-    [a1] = "Òâ¼ûÒÑ²éÑ¯"
+    [a1] = "æ„è§å·²æŸ¥è¯¢"
         [a1].Select
             With Selection.Interior
                 .Pattern = xlSolid
@@ -108,9 +108,9 @@ End Sub
 
 Sub Step2_4()
     
-    'ÇóºÍ¡¢°Ù·Ö±È
+    'æ±‚å’Œã€ç™¾åˆ†æ¯”
     
-    '¹Ø±ÕÆÁÄ»¸üĞÂ
+    'å…³é—­å±å¹•æ›´æ–°
     Application.ScreenUpdating = False
     
     Dim i, j, n As Integer
@@ -119,54 +119,54 @@ Sub Step2_4()
     
     For i = 1 To n
     
-        'µÚÒ»²¿·Ö£¬¸ü¸Ä¼şÊıÁĞÇóºÍ¹«Ê½
+        'ç¬¬ä¸€éƒ¨åˆ†ï¼Œæ›´æ”¹ä»¶æ•°åˆ—æ±‚å’Œå…¬å¼
         
-        '·şÎñ
+        'æœåŠ¡
         
-            'Í¶Ëß
+            'æŠ•è¯‰
             Cells(8, i * 3 - 1) = Application.WorksheetFunction.Sum(Range(Cells(9, i * 3 - 1), Cells(14, i * 3 - 1)))
             
-            '·şÎñ½¨Òé
+            'æœåŠ¡å»ºè®®
             Cells(15, i * 3 - 1) = Application.WorksheetFunction.Sum(Range(Cells(16, i * 3 - 1), Cells(30, i * 3 - 1)))
             
-            '±íÑï
+            'è¡¨æ‰¬
             Cells(31, i * 3 - 1) = Application.WorksheetFunction.Sum(Range(Cells(32, i * 3 - 1), Cells(37, i * 3 - 1)))
         
         Cells(7, i * 3 - 1) = Cells(8, i * 3 - 1) + Cells(15, i * 3 - 1) + Cells(31, i * 3 - 1)
         
-        '°²È«
+        'å®‰å…¨
         
-            'Í¶Ëß
+            'æŠ•è¯‰
             Cells(39, i * 3 - 1) = Application.WorksheetFunction.Sum(Range(Cells(40, i * 3 - 1), Cells(46, i * 3 - 1)))
             
-            '°²È«½¨Òé
+            'å®‰å…¨å»ºè®®
             Cells(47, i * 3 - 1) = Application.WorksheetFunction.Sum(Range(Cells(48, i * 3 - 1), Cells(56, i * 3 - 1)))
         
         Cells(38, i * 3 - 1) = Cells(39, i * 3 - 1) + Cells(47, i * 3 - 1)
         
-        'ÔËÓª
+        'è¿è¥
         
-            'Í¶Ëß
+            'æŠ•è¯‰
             Cells(58, i * 3 - 1) = Application.WorksheetFunction.Sum(Range(Cells(59, i * 3 - 1), Cells(62, i * 3 - 1)))
             
-            'ÔËÓª½¨Òé
+            'è¿è¥å»ºè®®
             Cells(63, i * 3 - 1) = Application.WorksheetFunction.Sum(Range(Cells(64, i * 3 - 1), Cells(77, i * 3 - 1)))
         
         Cells(57, i * 3 - 1) = Cells(58, i * 3 - 1) + Cells(63, i * 3 - 1)
         
-        '¼¼Êõ
+        'æŠ€æœ¯
             
-            '¼¼ÊõÍ¶Ëß
+            'æŠ€æœ¯æŠ•è¯‰
             Cells(79, i * 3 - 1) = Application.WorksheetFunction.Sum(Range(Cells(80, i * 3 - 1), Cells(81, i * 3 - 1)))
         
-            '¼¼Êõ½¨Òé
+            'æŠ€æœ¯å»ºè®®
             Cells(82, i * 3 - 1) = Application.WorksheetFunction.Sum(Range(Cells(83, i * 3 - 1), Cells(88, i * 3 - 1)))
 
             
         Cells(78, i * 3 - 1) = Cells(79, i * 3 - 1) + Cells(82, i * 3 - 1)
         
         
-        'µÚ¶ş²¿·Ö£¬¸ü¸Ä°Ù·Ö±ÈÁĞ¼ÆËã¹«Ê½
+        'ç¬¬äºŒéƒ¨åˆ†ï¼Œæ›´æ”¹ç™¾åˆ†æ¯”åˆ—è®¡ç®—å…¬å¼
         
         For j = 7 To 88
             
@@ -176,10 +176,10 @@ Sub Step2_4()
     
     Next
     
-    '¿ªÆôÆÁÄ»¸üĞÂ
+    'å¼€å¯å±å¹•æ›´æ–°
     Application.ScreenUpdating = True
     
-    [a1] = "Òâ¼ûÂÊÒÑ¼ÆËã"
+    [a1] = "æ„è§ç‡å·²è®¡ç®—"
         [a1].Select
             With Selection.Interior
                 .Pattern = xlSolid
@@ -194,26 +194,26 @@ End Sub
 
 Sub Step2_5()
     
-    '¶¨ÒåÎÄ¼ş±êÌâ
+    'å®šä¹‰æ–‡ä»¶æ ‡é¢˜
     
-    '¹Ø±ÕÆÁÄ»¸üĞÂ
+    'å…³é—­å±å¹•æ›´æ–°
     Application.ScreenUpdating = False
     
     Dim i, n As Integer
     Dim year, month As String
-    year = InputBox("ÇëÊäÈëÊı¾İÄê¶È", "Äê¶È", "2015")
-    month = InputBox("ÇëÊäÈëÊı¾İÊ±¼äµã", "Ê±¼äµã", "ÔÂ")
+    year = InputBox("è¯·è¾“å…¥æ•°æ®å¹´åº¦", "å¹´åº¦", "2015")
+    month = InputBox("è¯·è¾“å…¥æ•°æ®æ—¶é—´ç‚¹", "æ—¶é—´ç‚¹", "æœˆ")
     n = Application.CountA(Sheets(2).[4:4]) - 2
-    Sheets("Äê·İ").[a1] = year
-    Sheets("Ê±¼äµã").[a1] = month
-    Sheets(1).[b1] = Sheets(2).[b1] & "·şÎñÈÈÏßÊı¾İ¡ª¡ª" & Sheets("Äê·İ").[a1] & "Äê" & Sheets("Ê±¼äµã").[a1]
-    Sheets(1).[b2] = Sheets(2).[b1] & "¹«Ë¾"
+    Sheets("å¹´ä»½").[a1] = year
+    Sheets("æ—¶é—´ç‚¹").[a1] = month
+    Sheets(1).[b1] = Sheets(2).[b1] & "æœåŠ¡çƒ­çº¿æ•°æ®â€”â€”" & Sheets("å¹´ä»½").[a1] & "å¹´" & Sheets("æ—¶é—´ç‚¹").[a1]
+    Sheets(1).[b2] = Sheets(2).[b1] & "å…¬å¸"
     
-    Sheets("ÀàĞÍ").Select
+    Sheets("ç±»å‹").Select
     
     [b2] = Sheets(2).[b1]
     [c:c].Clear
-    [c1] = "ÏßÂ·"
+    [c1] = "çº¿è·¯"
     For i = 2 To n + 1
         
         Cells(i, 3) = Sheets(2).Cells(4, i)
@@ -221,16 +221,16 @@ Sub Step2_5()
     Next
     
     [d2] = n
-    Sheets("Êı¾İĞĞÁĞÊı").[b2] = n * 6
+    Sheets("æ•°æ®è¡Œåˆ—æ•°").[b2] = n * 6
     Sheets(2).Delete
     Sheets(2).Delete
     Sheets(1).Select
     
     [a1].Select
-     '¿ªÆôÆÁÄ»¸üĞÂ
+     'å¼€å¯å±å¹•æ›´æ–°
      Application.ScreenUpdating = True
      
-    [a1] = "Ö¸±ê"
+    [a1] = "æŒ‡æ ‡"
         [a1].Select
             With Selection.Interior
                 .Pattern = xlNone
